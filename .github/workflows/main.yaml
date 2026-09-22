@@ -35,3 +35,13 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Start application
+        run: |
+          npm start &
+          sleep 10
+
+      - name: DAST - OWASP ZAP
+        uses: zaproxy/action-baseline@v0.15.0
+        with:
+          target: 'http://localhost:3000'
