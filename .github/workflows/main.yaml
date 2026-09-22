@@ -25,6 +25,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: SAST - Semgrep
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: p/security-audit
+
       - name: Run build
         run: npm run build
 
